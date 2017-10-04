@@ -7,8 +7,15 @@ SeeDCombatTrackerNamespace.parseCommand = function(message) {
       SeeDCombatTrackerNamespace.Commands.initiative();
     } else if (message.content.indexOf("!enterBattle") != -1) {
       SeeDCombatTrackerNamespace.Commands.enterBattle(message);
+    } else if (message.content.indexOf("!nextTurn") != -1) {
+      SeeDCombatTrackerNamespace.Commands.nextTurn();
+    } else if (message.content.indexOf("!delay") != -1) {
+      SeeDCombatTrackerNamespace.Commands.delay(message);
     }
   }
 }
 
+on("ready",function() {
+  sendChat('SeeDCombatTracker API', "SeeDCombatTracker API online.");
+});
 on("chat:message",SeeDCombatTrackerNamespace.parseCommand);
