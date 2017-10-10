@@ -6,6 +6,11 @@ SeeDCombatTrackerNamespace.Commands = SeeDCombatTrackerNamespace.Commands || {};
 //Calling initiative adds all active tokens to the tracker
 //ToDo: Have a "speed" parameter on the tokens for quick addition to the battle.
 SeeDCombatTrackerNamespace.Commands.initiative = function() {
+  if (message.content.indexOf("help") != -1) {
+    sendChat('SeeDCombatTracker API', '/w '+ message.who.split(" ")[0] + "Use !init to give everyone 30 delay, as that is how battles in SeeD start.");
+    return;
+  }
+
   //Clear the init tracker
   Campaign().set("turnorder",JSON.stringify(""));
 

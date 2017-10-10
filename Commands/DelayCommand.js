@@ -4,6 +4,11 @@ var SeeDCombatTrackerNamespace = SeeDCombatTrackerNamespace || {};
 SeeDCombatTrackerNamespace.Commands = SeeDCombatTrackerNamespace.Commands || {};
 
 SeeDCombatTrackerNamespace.Commands.delay = function(message) {
+  if (message.content.indexOf("help") != -1) {
+    sendChat('SeeDCombatTracker API', '/w '+ message.who.split(" ")[0] + "Use !delay X, where X is your delay after adjustment for speed and any status effects.");
+    return;
+  }
+
   var turnOrder;
   if (Campaign().get("turnorder") == "") turnOrder = [];
   else turnOrder = JSON.parse(Campaign().get("turnorder"));

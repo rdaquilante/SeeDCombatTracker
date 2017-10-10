@@ -13,6 +13,11 @@ SeeDCombatTrackerNamespace.Commands.compare = function(a,b) {
 }
 
 SeeDCombatTrackerNamespace.Commands.nextTurn = function() {
+  if (message.content.indexOf("help") != -1) {
+    sendChat('SeeDCombatTracker API', '/w '+ message.who.split(" ")[0] + "Use !nextTurn to advance the initiative tracker to the next player(s).");
+    return;
+  }
+
   var turnOrder;
   if (Campaign().get("turnorder") == "") turnOrder = [];
   else turnOrder = JSON.parse(Campaign().get("turnorder"));

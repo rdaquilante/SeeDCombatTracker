@@ -6,6 +6,11 @@ SeeDCombatTrackerNamespace.Commands = SeeDCombatTrackerNamespace.Commands || {};
 //EnterBattle lets a character who came to the fight late enter with the provided
 //speed value.
 SeeDCombatTrackerNamespace.Commands.enterBattle = function(message) {
+  if (message.content.indexOf("help") != -1) {
+    sendChat('SeeDCombatTracker API', '/w '+ message.who.split(" ")[0] + "Use !enterBattle X, where X is your speed. All characters have 30 delay when entering battle.");
+    return;
+  }
+
   var turnOrder;
   if (Campaign().get("turnorder") == "") turnOrder = [];
   else turnOrder = JSON.parse(Campaign().get("turnorder"));
@@ -14,7 +19,7 @@ SeeDCombatTrackerNamespace.Commands.enterBattle = function(message) {
   var speed = strSplit[1];
   //We expect the command to be like !enterBattle 5, and accept nothing else.
   if (strSplit.length != 2 || isNaN(speed)) {
-    sendChat('SeeDCombatTracker API', '/w "' + message.who + '" !enterBattle takes a numeric parameter for speed and nothing else.');
+    sendChat('SeeDCombatTracker API', '/w "' + message.who.split(" ")[0] + '" !enterBattle takes a numeric parameter for speed and nothing else.');
   } else {
     var characters = findObjs({_type: 'graphic', _subtype: 'token'})
     var i;
