@@ -12,9 +12,9 @@ SeeDCombatTrackerNamespace.Commands.compare = function(a,b) {
   return 0;
 }
 
-SeeDCombatTrackerNamespace.Commands.nextTurn = function() {
+SeeDCombatTrackerNamespace.Commands.nextTurn = function(message) {
   if (message.content.indexOf("help") != -1) {
-    sendChat('SeeDCombatTracker API', '/w '+ message.who.split(" ")[0] + "Use !nextTurn to advance the initiative tracker to the next player(s).");
+    sendChat('SeeDCombatTracker API', '/w '+ message.who.split(" ")[0] + " Use !nextTurn to advance the initiative tracker to the next player(s).");
     return;
   }
 

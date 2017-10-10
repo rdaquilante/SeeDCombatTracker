@@ -7,7 +7,7 @@ SeeDCombatTrackerNamespace.Commands = SeeDCombatTrackerNamespace.Commands || {};
 //speed value.
 SeeDCombatTrackerNamespace.Commands.enterBattle = function(message) {
   if (message.content.indexOf("help") != -1) {
-    sendChat('SeeDCombatTracker API', '/w '+ message.who.split(" ")[0] + "Use !enterBattle X, where X is your speed. All characters have 30 delay when entering battle.");
+    sendChat('SeeDCombatTracker API', '/w '+ message.who.split(" ")[0] + " Use !enterBattle X, where X is your speed. All characters have 30 delay when entering battle.");
     return;
   }
 
